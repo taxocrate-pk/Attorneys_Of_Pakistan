@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata = {
   metadataBase: new URL('https://attorneys.com.pk'),
   title: 'Attorneys of Pakistan | Trusted Legal Counsel',
-  description: 'Professional legal services in Karachi, Islamabad, Rawalpindi, Lahore, and Hyderabad. Expert family law, corporate law, civil litigation, and more.',
+  description: 'Legal advice for family, property, corporate, tax, civil and criminal matters. Contact the Karachi, Islamabad, Rawalpindi or Lahore team.',
   generator: 'v0.app',
   icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
   openGraph: {
