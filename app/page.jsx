@@ -12,14 +12,14 @@ export const metadata = {
   alternates: { canonical: '/' },
 }
 const practiceRoute = {
-  'family-law': 'explaining-family-law-rule',
-  'divorce-custody': 'explaining-family-law-rule',
-  'property-law': 'civil-lawyer',
-  'corporate-tax': 'family-and-corporate-lawyers-in-pakistan',
-  'civil-litigation': 'civil-lawyer',
-  'criminal-law': 'criminal-law-in-pakistan',
-  'court-marriage': 'court-marriage-services-fees-process-in-pakistan',
-  'marriage-registration': 'court-marriage-services-fees-process-in-pakistan',
+  'family-law': 'family-lawyers-pakistan',
+  'divorce-custody': 'family-lawyers-pakistan',
+  'property-law': 'civil-lawyers-pakistan',
+  'corporate-tax': 'corporate-lawyers-pakistan',
+  'civil-litigation': 'civil-lawyers-pakistan',
+  'criminal-law': 'criminal-lawyers-pakistan',
+  'court-marriage': 'court-marriage-pakistan',
+  'marriage-registration': 'court-marriage-pakistan',
 }
 
 function SectionIntro({ eyebrow, title, copy, dark = false }) {
@@ -42,7 +42,7 @@ export default function Page() {
           <p className="mb-7 text-xs font-semibold uppercase tracking-[0.26em] text-[var(--brass)]">Trusted counsel. Strong representation.</p>
           <h1 className="max-w-3xl font-serif text-5xl leading-[0.98] tracking-[-0.04em] text-[var(--ink)] md:text-7xl">Attorneys and lawyers <span className="font-normal text-[var(--brass)]">in Pakistan.</span></h1>
           <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--muted)]">Legal advice for individuals, families and businesses begins with the facts and the documents. Discuss a family issue, property transaction, company obligation or court dispute with the relevant city team. We will help identify the immediate decision, the records to review and the lawful options available in your circumstances.</p>
-          <div className="mt-10 flex flex-wrap items-center gap-4"><a href="/contact-us/" className="rounded-full bg-[var(--ink)] px-7 py-4 text-sm font-semibold text-white transition hover:bg-[var(--brass)] hover:text-[var(--ink)]">Speak with an attorney <ArrowUpRight className="ml-2 inline" size={16} /></a><a href="#practice" className="rounded-full border border-black/15 px-7 py-4 text-sm font-semibold hover:border-[var(--brass)]">Explore our expertise</a></div>
+          <div className="mt-10 flex flex-wrap items-center gap-4"><a href="/contact/" className="rounded-full bg-[var(--ink)] px-7 py-4 text-sm font-semibold text-white transition hover:bg-[var(--brass)] hover:text-[var(--ink)]">Speak with an attorney <ArrowUpRight className="ml-2 inline" size={16} /></a><a href="#practice" className="rounded-full border border-black/15 px-7 py-4 text-sm font-semibold hover:border-[var(--brass)]">Explore our expertise</a></div>
           <div className="mt-14 flex flex-wrap gap-8 border-t border-black/10 pt-6 text-sm"><div><strong className="block font-serif text-2xl">4</strong><span className="text-[var(--muted)]">city contact teams</span></div><div><strong className="block font-serif text-2xl">1985</strong><span className="text-[var(--muted)]">year practice began</span></div><div><strong className="block font-serif text-2xl">4</strong><span className="text-[var(--muted)]">main practice groups</span></div></div>
         </div>
         <div className="relative min-h-[430px] overflow-hidden rounded-[2rem] bg-[var(--ink)] p-8 text-white md:p-12"><div className="absolute -right-20 -top-24 size-80 rounded-full border border-[var(--brass)]/30" /><div className="absolute -bottom-40 -left-20 size-96 rounded-full border border-white/10" /><div className="relative flex h-full flex-col justify-between"><div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-white/55"><span>Practice since 1985</span><span>Karachi · Pakistan</span></div><div><p className="font-serif text-4xl leading-tight md:text-5xl">Justice is not only a principle. It is a practice.</p><div className="mt-8 h-px w-16 bg-[var(--brass)]" /><p className="mt-5 max-w-sm text-sm leading-6 text-white/60">We combine local insight with a disciplined, client-first approach to every matter.</p></div><div className="flex items-center gap-3 text-sm text-white/70"><MapPin size={16} className="text-[var(--brass)]" /> Serving clients throughout Pakistan</div></div></div>
