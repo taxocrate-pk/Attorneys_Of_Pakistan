@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const page = entries.find(entry => entry.slug === slug)
   if (!page) return {}
-  return { title: `${guides[slug]?.focus || page.title} | Attorneys of Pakistan`, description: page.summary, alternates: { canonical: pathFor(slug) } }
+  return { title: `${guides[page.legacySlug || slug]?.focus || page.title} | Attorneys of Pakistan`, description: page.summary, alternates: { canonical: pathFor(slug) } }
 }
 
 export default async function ContentPage({ params }) {
@@ -22,7 +22,7 @@ export default async function ContentPage({ params }) {
   const page = entries.find(entry => entry.slug === slug)
   if (!page) notFound()
   const phone = page.phone || siteConfig.phone
-  const guide = guides[slug]
+  const guide = guides[page.legacySlug || slug]
   const sections = guide ? [...guide.sections, ...sharedOrder[guide.kind].map(key => sharedSections[key])] : (page.topics || ['Documents and records', 'When to seek professional advice', 'Next steps']).map((topic, index) => [topic, sectionCopy(page, index)])
   const questions = guide ? guideQuestions(page, guide, phone) : []
   const canonical = `${siteConfig.url}${pathFor(slug)}`
@@ -46,14 +46,14 @@ export default async function ContentPage({ params }) {
             <p>{body}</p>
           </section>)}
           {guide && <section className="border-t border-black/10 pt-10"><h2 className="mb-6 font-serif text-3xl">Questions about {guide.focus.toLowerCase()}</h2><div className="space-y-8">{questions.map(([question, answer]) => <div key={question}><h3 className="mb-2 font-serif text-xl">{question}</h3><p>{answer}</p></div>)}</div></section>}
-          {officialReferences[slug] && <p className="text-sm">Official reference: <a className="underline" href={officialReferences[slug][1]}>{officialReferences[slug][0]}</a>. Check the current applicable law and local procedure for your circumstances.</p>}
+          {officialReferences[page.legacySlug || slug] && <p className="text-sm">Official reference: <a className="underline" href={officialReferences[page.legacySlug || slug][1]}>{officialReferences[page.legacySlug || slug][0]}</a>. Check the current applicable law and local procedure for your circumstances.</p>}
           {guide && <nav aria-label="Related legal services" className="border-t border-black/10 pt-8"><h2 className="mb-4 font-serif text-2xl">Related reading</h2><ul className="space-y-2 text-sm">{allPages.filter(entry => entry.slug !== slug && entry.group === page.group).slice(0, 3).map(entry => <li key={entry.slug}><Link className="underline hover:text-[var(--brass)]" href={pathFor(entry.slug)}>{entry.title}</Link></li>)}</ul></nav>}
           <p className="border-t border-black/10 pt-8 text-sm text-[var(--muted)]">This page provides general information. The appropriate procedure depends on the facts, documents and applicable law in your case. Discuss your circumstances with a qualified lawyer before taking action.</p>
         </article>
         <aside className="h-fit rounded-2xl border border-black/10 p-6"><h2 className="font-serif text-2xl">Arrange a consultation</h2><p className="mt-3 text-sm leading-6 text-[var(--muted)]">Tell us your city, the nature of the matter and the documents you already have.</p><a className="mt-5 block font-semibold text-[var(--brass)]" href={`tel:${phone.replaceAll(' ', '')}`}>{phone}</a><a className="mt-3 block text-sm underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></aside>
       </div>
     </main>
-    <footer className="bg-[var(--ink)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><p className="mt-3">{siteConfig.address}</p><Link href="/comprehensive-privacy-policy-for-attorneys-com-pk/" className="mt-3 inline-block underline">Privacy Policy</Link></div></footer>
+    <footer className="bg-[var(--ink)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><p className="mt-3">{siteConfig.address}</p><Link href="/privacy-policy/" className="mt-3 inline-block underline">Privacy Policy</Link></div></footer>
   </div>
 }
 
