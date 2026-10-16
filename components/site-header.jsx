@@ -27,12 +27,12 @@ export default function SiteHeader() {
         <Link href="/" className="hover:text-[var(--brass)]">Home</Link>
         <details className="group relative"><summary className="flex cursor-pointer list-none items-center gap-1 hover:text-[var(--brass)]">Our Services <ChevronDown size={15} className="group-open:rotate-180" /></summary><div className="absolute left-1/2 top-full z-40 mt-4 hidden max-h-[70vh] group-hover:block group-focus-within:block group-open:block w-[min(760px,90vw)] -translate-x-1/2 overflow-y-auto rounded-2xl border border-black/10 bg-[var(--paper)] shadow-xl"><ServiceLinks /></div></details>
         <Link href="/blog/" className="hover:text-[var(--brass)]">Blog</Link>
-        <Link href="/about-us/" className="hover:text-[var(--brass)]">About Us</Link>
+        <Link href="/about/" className="hover:text-[var(--brass)]">About Us</Link>
       </nav>
       <div className="flex items-center gap-3">
         <a href={`tel:${siteConfig.phone.replaceAll(' ', '')}`} className="hidden items-center gap-2 text-sm font-medium md:flex"><Phone size={15} /> {siteConfig.phone}</a>
-        <Link href="/contact-us/" className="rounded-full bg-[var(--ink)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[var(--brass)] hover:text-[var(--ink)]">Consultation</Link>
-        <details className="group relative lg:hidden"><summary className="grid size-10 cursor-pointer list-none place-items-center rounded-full border border-black/10" aria-label="Open navigation"><Menu size={18} /></summary><nav aria-label="Mobile navigation" className="absolute right-0 top-full z-40 mt-3 max-h-[75vh] w-[min(360px,90vw)] overflow-y-auto rounded-2xl border border-black/10 bg-[var(--paper)] p-5 shadow-xl"><div className="grid gap-4 text-sm font-medium"><Link href="/">Home</Link><details><summary className="flex cursor-pointer list-none items-center gap-1">Our Services <ChevronDown size={15} /></summary><ServiceLinks /></details><Link href="/blog/">Blog</Link><Link href="/about-us/">About Us</Link></div></nav></details>
+        <Link href="/contact/" className="rounded-full bg-[var(--ink)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[var(--brass)] hover:text-[var(--ink)]">Consultation</Link>
+        <details className="group relative lg:hidden"><summary className="grid size-10 cursor-pointer list-none place-items-center rounded-full border border-black/10" aria-label="Open navigation"><Menu size={18} /></summary><nav aria-label="Mobile navigation" className="absolute right-0 top-full z-40 mt-3 max-h-[75vh] w-[min(360px,90vw)] overflow-y-auto rounded-2xl border border-black/10 bg-[var(--paper)] p-5 shadow-xl"><div className="grid gap-4 text-sm font-medium"><Link href="/">Home</Link><details><summary className="flex cursor-pointer list-none items-center gap-1">Our Services <ChevronDown size={15} /></summary><ServiceLinks /></details><Link href="/blog/">Blog</Link><Link href="/about/">About Us</Link></div></nav></details>
       </div>
     </div>
   </header>
