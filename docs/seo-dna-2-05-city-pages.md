@@ -50,3 +50,9 @@ Check exact and canonical routes before adding; preserve all existing indexed ro
 - **Do not use** either of these obsolete/cancelled Faisalabad addresses in new pages, schema, local CTAs, or image metadata: (1) Chamber No. 6, Jalal Law Chambers, Near Bakhshi Khana, District Courts, Faisalabad; (2) Third Floor, Tanveer Randhawa Building, District Courts, Faisalabad.
 - Both were explicitly rejected by the owner. A replacement Faisalabad office address is pending. **Do not invent or publish an office address** until the owner supplies the new one.
 - Applies to Family Lawyers in Faisalabad, Property Lawyers in Faisalabad, and any future related page drafts. A city served does not itself establish a verified city office for LocalBusiness schema.
+
+## Faisalabad Address Dictated Again — Reconfirmation Required (19 October 2026)
+- Owner verbally dictated the following text for Faisalabad: **Rana Shafqat Rasool, M.A., LL.B., Advocate High Court — Chamber No. 6, Jalal Law Chambers, Near Bakhshi Khana, District Courts (Zila Kachehri), Faisalabad.**
+- **Conflict requiring reconfirmation:** The same Chamber No. 6 / Jalal Law Chambers address was explicitly described by the owner earlier in the same conversation as cancelled/incorrect, along with a second Tanveer Randhawa Building address. This latest dictation may mean the owner is reinstating it with a corrected in-charge identity, but do not assume.
+- Retain the earlier cancelled-address block as history. **Do not publish or insert the above physical address into website body, footer, LocalBusiness/LegalService structured data, contacts or landing pages unless the owner explicitly confirms that this same address is now current and approved.** 
+- The lawyer's academic qualifications (M.A., LL.B.) were supplied directly by the owner; verify before public use if another roster conflicts.
