@@ -44,3 +44,8 @@ Check exact and canonical routes before adding; preserve all existing indexed ro
 - In the inspected Attorneys Next.js branch, `components/site-header.jsx` creates both desktop/mobile `ServiceLinks` from `lib/routes.js` `pages` entries. Reuse that shared source; test dropdown accessibility and links on desktop, 390px and 360px mobile. This avoids two inconsistent navigation implementations.
 - The current keyword-density brief is 1.5% minimum, 2.2% maximum for each newly targeted commercial service page. Legal accuracy and real readability always remain mandatory; report exact calculation.
 - This is repository policy documentation, not evidence that the 11 routes, menu additions, Lighthouse testing or production deployment have been completed.
+
+## Faisalabad Office — Owner Correction (19 October 2026)
+- **Do not use** either of these obsolete/cancelled Faisalabad addresses in new pages, schema, local CTAs, or image metadata: (1) Chamber No. 6, Jalal Law Chambers, Near Bakhshi Khana, District Courts, Faisalabad; (2) Third Floor, Tanveer Randhawa Building, District Courts, Faisalabad.
+- Both were explicitly rejected by the owner. A replacement Faisalabad office address is pending. **Do not invent or publish an office address** until the owner supplies the new one.
+- Applies to Family Lawyers in Faisalabad, Property Lawyers in Faisalabad, and any future related page drafts. A city served does not itself establish a verified city office for LocalBusiness schema.
