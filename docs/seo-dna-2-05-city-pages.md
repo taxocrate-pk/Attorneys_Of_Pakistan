@@ -36,3 +36,11 @@ Check exact and canonical routes before adding; preserve all existing indexed ro
 - Preserve all Court Marriage, Online Nikah and Online Marriage page contents, images, slugs and routing.
 - Do not edit WordPress or the `Income-taxlawyers` repository for Attorneys.com.pk work.
 - The Vercel project `attorneys-of-pakistan` was confirmed to have a READY preview from the above repository; a production custom-domain mapping to attorneys.com.pk has NOT been verified. Do not claim production publication without confirming it.
+
+## SEO DNA 2.06 — Controlling Navigation / Template Amendment (19 October 2026)
+- This amendment supersedes earlier conflicting wording in this project brief. The cross-site master is SEO DNA 2.06, derived from the 17 October 2.05 amended master.
+- Preserve existing header, footer, primary menu appearance, dropdown/mobile layout, branding, contacts and CTA without redesign or broad refactor.
+- Add missing "Family Lawyers" and "Property Lawyers" service-page links inside the existing "Our Services" dropdown or the appropriate existing services subgroup **only after each corresponding page route exists and is tested**. Do not change existing menu labels or remove existing links.
+- In the inspected Attorneys Next.js branch, `components/site-header.jsx` creates both desktop/mobile `ServiceLinks` from `lib/routes.js` `pages` entries. Reuse that shared source; test dropdown accessibility and links on desktop, 390px and 360px mobile. This avoids two inconsistent navigation implementations.
+- The current keyword-density brief is 1.5% minimum, 2.2% maximum for each newly targeted commercial service page. Legal accuracy and real readability always remain mandatory; report exact calculation.
+- This is repository policy documentation, not evidence that the 11 routes, menu additions, Lighthouse testing or production deployment have been completed.
