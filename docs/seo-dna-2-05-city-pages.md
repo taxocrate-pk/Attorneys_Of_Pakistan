@@ -46,6 +46,7 @@ Check exact and canonical routes before adding; preserve all existing indexed ro
 - This is repository policy documentation, not evidence that the 11 routes, menu additions, Lighthouse testing or production deployment have been completed.
 
 ## Faisalabad Office — Owner Correction (19 October 2026)
+**Confirmed Faisalabad office in-charge (owner-supplied, 19 October 2026): Rana Shafqat Rasool, Advocate High Court.** Use this name for the Faisalabad Family Lawyers and Property Lawyers pages after ordinary legal-identity QA. The new office address is still pending and must not be guessed.
 - **Do not use** either of these obsolete/cancelled Faisalabad addresses in new pages, schema, local CTAs, or image metadata: (1) Chamber No. 6, Jalal Law Chambers, Near Bakhshi Khana, District Courts, Faisalabad; (2) Third Floor, Tanveer Randhawa Building, District Courts, Faisalabad.
 - Both were explicitly rejected by the owner. A replacement Faisalabad office address is pending. **Do not invent or publish an office address** until the owner supplies the new one.
 - Applies to Family Lawyers in Faisalabad, Property Lawyers in Faisalabad, and any future related page drafts. A city served does not itself establish a verified city office for LocalBusiness schema.
