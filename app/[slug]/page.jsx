@@ -53,7 +53,7 @@ export default async function ContentPage({ params }) {
         <aside className="h-fit rounded-2xl border border-black/10 p-6"><h2 className="font-serif text-2xl">Arrange a consultation</h2><p className="mt-3 text-sm leading-6 text-[var(--muted)]">Tell us your city, the nature of the matter and the documents you already have.</p><a className="mt-5 block font-semibold text-[var(--brass)]" href={`tel:${phone.replaceAll(' ', '')}`}>{phone}</a><a className="mt-3 block text-sm underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></aside>
       </div>
     </main>
-    <footer className="bg-[var(--ink)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><div className="mt-3 space-y-1">{siteConfig.offices.map(o => <p key={o}>{o}</p>)}</div><Link href="/comprehensive-privacy-policy-for-attorneys-com-pk/" className="mt-3 inline-block underline">Privacy Policy</Link></div></footer>
+    <footer className="bg-[var(--ink)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><div className="mt-3 space-y-1">{siteConfig.offices.map(o => <p key={o}>{o}</p>)}</div><Link href="/comprehensive-privacy-policy-for-attorneys-com-pk/" className="mt-3 inline-block underline">Privacy Policy</Link></div><p className="mx-auto mt-6 max-w-7xl text-xs text-white/50">© 2024–{new Date().getFullYear()} Attorneys of Pakistan</p></footer>
   </div>
 }
 
