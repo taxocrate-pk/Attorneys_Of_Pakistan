@@ -61,6 +61,6 @@ export default function Page() {
 
     <section className="mx-auto max-w-4xl px-5 py-20 lg:px-8"><SectionIntro eyebrow="Questions, answered" title="Before you get in touch." /> <div className="divide-y divide-black/10 border-y border-black/10">{faqs.slice(0, 5).map(faq => <details key={faq.question} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between font-serif text-xl">{faq.question}<ChevronDown className="transition group-open:rotate-180" size={19} /></summary><p className="max-w-2xl pt-4 text-sm leading-7 text-[var(--muted)]">{faq.answer}</p></details>)}</div></section>
 
-    <footer className="bg-[var(--ink)] px-5 py-10 text-white lg:px-8"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center"><Brand /><div className="text-sm text-white/55"><p>{siteConfig.address}</p><p className="mt-2">{siteConfig.email} · {siteConfig.phone}</p></div><p className="text-xs text-white/40">© {new Date().getFullYear()} Attorneys of Pakistan</p></div></footer>
+    <footer className="bg-[var(--ink)] px-5 py-10 text-white lg:px-8"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center"><Brand /><div className="text-sm text-white/55"><p>{siteConfig.offices.map(o => <span key={o} className="block">{o}</span>)}</p><p className="mt-2">{siteConfig.email} · {siteConfig.phone}</p></div><p className="text-xs text-white/40">© {new Date().getFullYear()} Attorneys of Pakistan</p></div></footer>
   </main>
 }
