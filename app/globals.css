@@ -48,7 +48,7 @@
 :root {
   color-scheme: light;
   --background: oklch(1 0 0);
-  --foreground: #1f2937;
+  --foreground: #2b1a14;
   --card: oklch(0.98 0 0);
   --card-foreground: #1f2937;
   --popover: oklch(1 0 0);
@@ -109,10 +109,11 @@
 }
 
 :root {
-  --paper: #f7f5f0;
-  --ink: #18242a;
-  --brass: #b38a46;
-  --muted: #667076;
+  --paper: #fbf6ec;
+  --ink: #5a1420;
+  --brass: #b8902e;
+  --muted: #5e4a44;
+  --maroon-dark: #3f0d16;
 }
 
 html { scroll-behavior: smooth; }
@@ -130,3 +131,6 @@ body { background: var(--paper); }
     @apply bg-background text-foreground;
   }
 }
+
+.font-serif{font-family:'Playfair Display',Georgia,serif}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif}

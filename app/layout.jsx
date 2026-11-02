@@ -16,8 +16,8 @@ export const metadata = {
   },
 }
 
-export const viewport = { colorScheme: 'light', themeColor: '#f7f5f0' }
+export const viewport = { colorScheme: 'light', themeColor: '#5a1420' }
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
+  return <html lang="en"><head><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" /></head><body className="antialiased" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }

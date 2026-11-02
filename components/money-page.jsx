@@ -38,10 +38,21 @@ export function HeroImage({ image }) {
   </figure>
 }
 
+const LAWYERS = {
+  karachi: [['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court'], ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court']],
+  default: [['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'], ['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court']],
+}
+export function LawyerPair({ set = 'default' }) {
+  return <div className="grid grid-cols-2 gap-4">{(LAWYERS[set] || LAWYERS.default).map(([file, name, title]) => <figure key={file} className="overflow-hidden rounded-lg border-[3px] border-[var(--brass)] bg-[#efe4cc]">
+    <img src={`/lawyers/${file}.webp`} alt={`${name}, ${title}`} width="300" height="375" className="aspect-[4/5] w-full object-cover object-top" loading="lazy" decoding="async" />
+    <figcaption className="px-3 py-2 text-sm"><strong className="block font-serif text-[var(--ink)]">{name}</strong><span className="text-[var(--muted)]">{title}</span></figcaption>
+  </figure>)}</div>
+}
+
 function ContactButtons({ phone, dark = false }) {
   return <div className="flex flex-wrap gap-3">
-    <a href={`tel:+${digits(phone)}`} className={`inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold ${dark ? 'bg-white text-[var(--ink)]' : 'bg-[var(--ink)] text-white'}`}><Phone size={16} aria-hidden="true" /> Call {phone}</a>
-    <a href={`https://wa.me/${digits(phone)}`} className={`inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold ${dark ? 'border-white/40 text-white' : 'border-black/20'}`}><MessageCircle size={16} aria-hidden="true" /> WhatsApp {phone}</a>
+    <a href={`tel:+${digits(phone)}`} className={`inline-flex items-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold ${dark ? 'bg-white text-[var(--ink)]' : 'border-2 border-[var(--ink)] text-[var(--ink)]'}`}><Phone size={16} aria-hidden="true" /> Call {phone}</a>
+    <a href={`https://wa.me/${digits(phone)}`} className={`inline-flex items-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold ${dark ? 'bg-[var(--brass)] text-white' : 'bg-[var(--brass)] text-white'}`}><MessageCircle size={16} aria-hidden="true" /> WhatsApp {phone}</a>
   </div>
 }
 
@@ -72,6 +83,7 @@ export default function MoneyPage({ slug, page }) {
         <p className="mt-4 text-sm text-[var(--muted)]">Office: {page.officeLine}</p>
       </div>
       <HeroImage image={page.heroImage} />
+      <div className="mt-10 max-w-xl"><LawyerPair set={/Karachi/.test(page.officeLine) ? 'karachi' : 'default'} /></div>
 
       <article className="mt-16 space-y-14 border-t border-black/10 pt-12 text-base leading-8">
         {page.cards && <section><H2>{page.cards.heading}</H2>
@@ -135,6 +147,6 @@ export default function MoneyPage({ slug, page }) {
         </footer>
       </article>
     </main>
-    <footer className="bg-[var(--ink)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><div className="mt-3 space-y-1">{siteConfig.offices.map(o => <p key={o}>{o}</p>)}</div><Link href="/comprehensive-privacy-policy-for-attorneys-com-pk/" className="mt-3 inline-block underline">Privacy Policy</Link></div><p className="mx-auto mt-6 max-w-7xl text-xs text-white/50">© 2024–{new Date().getFullYear()} Attorneys of Pakistan</p></footer>
+    <footer className="bg-[var(--maroon-dark)] px-5 py-10 text-sm text-white/70 lg:px-8"><div className="mx-auto max-w-7xl"><Link href="/" className="font-serif text-xl text-white">Attorneys of Pakistan</Link><div className="mt-3 space-y-1">{siteConfig.offices.map(o => <p key={o}>{o}</p>)}</div><Link href="/comprehensive-privacy-policy-for-attorneys-com-pk/" className="mt-3 inline-block underline">Privacy Policy</Link></div><p className="mx-auto mt-6 max-w-7xl text-xs text-white/50">© 2024–{new Date().getFullYear()} Attorneys of Pakistan</p></footer>
   </div>
 }
