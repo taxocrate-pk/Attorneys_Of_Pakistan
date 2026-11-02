@@ -40,6 +40,7 @@ export function HeroImage({ image }) {
 
 const LAWYERS = {
   karachi: [['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court'], ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court']],
+  marriage: [['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'], ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court']],
   default: [['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'], ['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court']],
 }
 export function LawyerPair({ set = 'default' }) {
@@ -83,7 +84,7 @@ export default function MoneyPage({ slug, page }) {
         <p className="mt-4 text-sm text-[var(--muted)]">Office: {page.officeLine}</p>
       </div>
       <HeroImage image={page.heroImage} />
-      <div className="mt-10 max-w-xl"><LawyerPair set={/Karachi/.test(page.officeLine) ? 'karachi' : 'default'} /></div>
+      <div className="mt-10 max-w-xl"><LawyerPair set={/marriage|nikah/i.test(page.keyphrase + ' ' + page.h1) ? 'marriage' : /Karachi/.test(page.officeLine) ? 'karachi' : 'default'} /></div>
 
       <article className="mt-16 space-y-14 border-t border-black/10 pt-12 text-base leading-8">
         {page.cards && <section><H2>{page.cards.heading}</H2>
