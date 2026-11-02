@@ -5,6 +5,8 @@ import { allPages, blogPosts, pages, pathFor } from '../../lib/routes'
 import { siteConfig } from '../../lib/content'
 import { guides } from '../../lib/page-guides'
 import { sharedSections, sharedOrder, officialReferences } from '../../lib/longform'
+import { moneyPages } from '../../lib/money-pages'
+import MoneyPage from '../../components/money-page'
 
 const entries = [...allPages, ...blogPosts]
 
@@ -14,6 +16,8 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const page = entries.find(entry => entry.slug === slug)
   if (!page) return {}
+  const money = moneyPages[slug]
+  if (money) return { title: { absolute: money.metaTitle }, description: money.metaDescription, alternates: { canonical: pathFor(slug) }, openGraph: { title: money.metaTitle, description: money.metaDescription, url: pathFor(slug), siteName: 'Attorneys of Pakistan', type: 'website' } }
   return { title: `${guides[slug]?.focus || page.title} | Attorneys of Pakistan`, description: page.summary, alternates: { canonical: pathFor(slug) } }
 }
 
@@ -21,6 +25,7 @@ export default async function ContentPage({ params }) {
   const { slug } = await params
   const page = entries.find(entry => entry.slug === slug)
   if (!page) notFound()
+  if (moneyPages[slug]) return <MoneyPage slug={slug} page={moneyPages[slug]} />
   const phone = page.phone || siteConfig.phone
   const guide = guides[slug]
   const sections = guide ? [...guide.sections, ...sharedOrder[guide.kind].map(key => sharedSections[key])] : (page.topics || ['Documents and records', 'When to seek professional advice', 'Next steps']).map((topic, index) => [topic, sectionCopy(page, index)])
