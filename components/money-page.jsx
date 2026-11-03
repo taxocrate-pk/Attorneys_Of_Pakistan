@@ -34,7 +34,7 @@ const digits = phone => phone.replace(/[^0-9]/g, '')
 export function HeroImage({ image }) {
   if (!image?.src) return null
   return <figure className="mt-12 overflow-hidden rounded-2xl border border-black/10">
-    <img src={image.src} alt={image.alt || ''} width={image.width || 1200} height={image.height || 675} className="h-auto w-full" loading="eager" decoding="async" />
+    <img src={image.src} alt={image.alt || ''} width={image.width || 1200} height={image.height || 675} className="h-auto w-full" loading={image.lazy ? 'lazy' : 'eager'} decoding="async" />
   </figure>
 }
 
@@ -91,7 +91,7 @@ export default function MoneyPage({ slug, page }) {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{page.cards.items.map(([title, text]) => <div key={title} className="rounded-2xl border border-black/10 p-6"><h3 className="font-serif text-xl leading-snug">{title}</h3><p className="mt-3 text-sm leading-6 text-[var(--muted)]"><Rich text={text} /></p></div>)}</div>
         </section>}
 
-        {page.sections.map(section => <section key={section.h2}><H2>{section.h2}</H2>
+        {page.sections.map((section, si) => <section key={section.h2}>{si === 2 && <HeroImage image={page.midImage} />}<H2>{section.h2}</H2>
           {section.paras?.map((p, i) => <p key={i} className="mb-4"><Rich text={p} /></p>)}
           {section.subs?.map(sub => <div key={sub.h3}><H3>{sub.h3}</H3>{sub.paras.map((p, i) => <p key={i} className="mb-4"><Rich text={p} /></p>)}</div>)}
         </section>)}
