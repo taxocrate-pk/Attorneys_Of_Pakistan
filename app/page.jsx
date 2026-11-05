@@ -33,7 +33,7 @@ function SectionIntro({ eyebrow, title, copy, dark = false }) {
 
 export default function Page() {
   return <main id="top" className="min-h-screen overflow-hidden bg-[var(--paper)] text-[var(--ink)]">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'LegalService', name: siteConfig.name, url: siteConfig.url, telephone: siteConfig.phone, address: { '@type': 'PostalAddress', streetAddress: siteConfig.address, addressLocality: 'Karachi', addressCountry: 'PK' }, areaServed: ['Karachi', 'Islamabad', 'Rawalpindi', 'Lahore'] }).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'LegalService', '@id': `${siteConfig.url}/#legalservice`, name: siteConfig.name, url: `${siteConfig.url}/`, parentOrganization: { '@id': `${siteConfig.url}/#organization` }, image: `${siteConfig.url}/apple-icon.png`, telephone: siteConfig.phone, address: { '@type': 'PostalAddress', streetAddress: 'DHA Phase 7', addressLocality: 'Karachi', addressCountry: 'PK' }, areaServed: ['Karachi', 'Islamabad', 'Rawalpindi', 'Lahore'] }).replace(/</g, '\\u003c') }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.slice(0, 5).map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }).replace(/</g, '\\u003c') }} />
     <SiteHeader />
 
