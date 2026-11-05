@@ -38,13 +38,30 @@ export function HeroImage({ image }) {
   </figure>
 }
 
+const PEOPLE = {
+  rizvi: ['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court'],
+  qureshi: ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court'],
+  fiaz: ['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'],
+  shah: ['mohsin-ali-shah', 'Syed Mohsin Ali Shah', 'Senior Consulting Lawyer'],
+  sobia: ['sobia-mohsin', 'Sobia Mohsin', 'Advocate'],
+  qazi: ['zaheer-ahmed-qazi', 'Zaheer Ahmed Qazi', 'Advocate High Court'],
+  kashif: ['kashif-mumtaz', 'Kashif Mumtaz', 'Advocate High Court'],
+  usman: ['muhammad-usman-bhatti', 'Muhammad Usman Bhatti', 'Advocate High Court'],
+  kahloon: ['muhammad-junaid-kahloon', 'Muhammad Junaid Kahloon', 'Advocate High Court'],
+}
+// Owner photo rule (NetWork-Picture/lawyers/LIST.md): marriage pages never show
+// Khalid Mumtaz or Tahir Pervez Qureshi; city pages show that city's advocates.
 const LAWYERS = {
-  karachi: [['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court'], ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court']],
-  marriage: [['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'], ['tahir-pervez-qureshi', 'Tahir Pervez Qureshi', 'Advocate High Court']],
-  default: [['fiaz-ahmed-khakh', 'Fiaz Ahmed Khakh', 'Advocate Supreme Court'], ['syed-akhtar-rizvi', 'Syed Akhtar Rizvi', 'Advocate Supreme Court']],
+  karachi: ['rizvi', 'qureshi'],
+  marriage: ['sobia', 'qazi'],
+  islamabad: ['kashif', 'fiaz'],
+  rawalpindi: ['usman', 'kashif'],
+  lahore: ['kahloon', 'fiaz'],
+  corporate: ['shah', 'fiaz'],
+  default: ['fiaz', 'rizvi'],
 }
 export function LawyerPair({ set = 'default' }) {
-  return <div className="grid grid-cols-2 gap-4">{(LAWYERS[set] || LAWYERS.default).map(([file, name, title]) => <figure key={file} className="overflow-hidden rounded-lg border-[3px] border-[var(--brass)] bg-[#efe4cc]">
+  return <div className="grid grid-cols-2 gap-4">{(LAWYERS[set] || LAWYERS.default).map(key => PEOPLE[key]).map(([file, name, title]) => <figure key={file} className="overflow-hidden rounded-lg border-[3px] border-[var(--brass)] bg-[#efe4cc]">
     <img src={`/lawyers/${file}.webp`} alt={`${name}, ${title}`} width="300" height="375" className="aspect-[4/5] w-full object-cover object-top" loading="lazy" decoding="async" />
     <figcaption className="px-3 py-2 text-sm"><strong className="block font-serif text-[var(--ink)]">{name}</strong><span className="text-[var(--muted)]">{title}</span></figcaption>
   </figure>)}</div>
@@ -64,7 +81,7 @@ export function moneySchema(slug, page) {
   const canonical = `${siteConfig.url}${pathFor(slug)}`
   return [
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url }, { '@type': 'ListItem', position: 2, name: page.h1, item: canonical }] },
-    { '@context': 'https://schema.org', '@type': 'LegalService', name: siteConfig.name, url: canonical, telephone: page.phone, email: siteConfig.email, areaServed: page.areaServed, address: { '@type': 'PostalAddress', streetAddress: page.schemaAddress.street, addressLocality: page.schemaAddress.locality, addressCountry: 'PK' } },
+    { '@context': 'https://schema.org', '@type': 'LegalService', '@id': `${canonical}#legalservice`, name: siteConfig.name, url: canonical, parentOrganization: { '@id': `${siteConfig.url}/#organization` }, image: `${siteConfig.url}/apple-icon.png`, telephone: page.phone, email: siteConfig.email, areaServed: page.areaServed, address: { '@type': 'PostalAddress', streetAddress: page.schemaAddress.street.replace(/, (Karachi|Islamabad|Rawalpindi|Lahore)$/, ''), addressLocality: page.schemaAddress.locality, addressCountry: 'PK' } },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) },
   ]
 }
@@ -84,7 +101,7 @@ export default function MoneyPage({ slug, page }) {
         <p className="mt-4 text-sm text-[var(--muted)]">Office: {page.officeLine}</p>
       </div>
       <HeroImage image={page.heroImage} />
-      <div className="mt-10 max-w-xl"><LawyerPair set={/marriage|nikah/i.test(page.keyphrase + ' ' + page.h1) ? 'marriage' : /Karachi/.test(page.officeLine) ? 'karachi' : 'default'} /></div>
+      <div className="mt-10 max-w-xl" data-dna-skip=""><LawyerPair set={page.lawyerSet || (/marriage|nikah/i.test(page.keyphrase + ' ' + page.h1) ? 'marriage' : /Karachi/.test(page.officeLine) ? 'karachi' : 'default')} /></div>
 
       <article className="mt-16 space-y-14 border-t border-black/10 pt-12 text-base leading-8">
         {page.cards && <section><H2>{page.cards.heading}</H2>
@@ -120,7 +137,7 @@ export default function MoneyPage({ slug, page }) {
           {section.subs?.map(sub => <div key={sub.h3}><H3>{sub.h3}</H3>{sub.paras.map((p, i) => <p key={i} className="mb-4"><Rich text={p} /></p>)}</div>)}
         </section>)}
 
-        <section><H2>{page.faqHeading}</H2>
+        <section id="faq"><H2>{page.faqHeading}</H2>
           <div className="space-y-7">{page.faqs.map(([q, a]) => <div key={q}><h3 className="mb-2 font-serif text-xl leading-snug">{q}</h3><p><Rich text={a} /></p></div>)}</div>
         </section>
 
@@ -143,7 +160,7 @@ export default function MoneyPage({ slug, page }) {
         <footer className="space-y-1 border-t border-black/10 pt-8 text-sm">
           <p><strong>Reviewed by:</strong> {page.reviewer}</p>
           <p><strong>Published by:</strong> Attorneys of Pakistan</p>
-          <p><strong>Last updated:</strong> 2 November 2026</p>
+          <p><strong>Last updated:</strong> 5 November 2026</p>
           <p className="pt-4 text-[var(--muted)]">This page gives general information about Pakistani law and procedure. It is not advice on your particular case; the correct course depends on your facts, documents and the law that applies to you.</p>
         </footer>
       </article>

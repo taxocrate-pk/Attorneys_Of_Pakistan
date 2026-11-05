@@ -34,6 +34,7 @@ export default async function ContentPage({ params }) {
   const schema = guide ? [
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url }, { '@type': 'ListItem', position: 2, name: page.title, item: canonical }] },
     ...(pages.some(entry => entry.slug === slug) ? [{ '@context': 'https://schema.org', '@type': 'LegalService', name: siteConfig.name, url: canonical, telephone: phone, areaServed: page.title, address: { '@type': 'PostalAddress', streetAddress: siteConfig.address, addressLocality: 'Karachi', addressCountry: 'PK' } }] : []),
+    ...(blogPosts.some(entry => entry.slug === slug) ? [{ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: page.title, description: page.summary, datePublished: page.date, mainEntityOfPage: canonical, author: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: siteConfig.name }, publisher: { '@id': `${siteConfig.url}/#organization` } }] : []),
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: questions.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
   ] : []
   return <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)]"><SiteHeader />
